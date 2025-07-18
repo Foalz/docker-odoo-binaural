@@ -5,10 +5,10 @@
     'description': '',
     'author': 'Pedro Contreras',
     'website': 'https://www.tuempresa.com',
-    'category': 'Accounting',
-    'depends': ['account'],
+    'category': 'Human Resources',
+    'depends': ['hr', 'hr_payroll'],
     'data': [
-        'views/account_move.xml',
+        'data/ir_cron.xml',
     ],
     'installable': True,
     'application': False,
