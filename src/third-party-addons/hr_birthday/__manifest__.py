@@ -9,6 +9,7 @@
     'depends': ['hr', 'hr_payroll'],
     'data': [
         'data/ir_cron.xml',
+        'data/mail_template.xml',
     ],
     'installable': True,
     'application': False,
