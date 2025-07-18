@@ -6,3 +6,4 @@ src/odoo-venezuela
 src/custom/*
 .resources/Dockerfile
 **/.vscode/
+__pycache__/*
