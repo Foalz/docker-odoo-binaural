@@ -7,3 +7,4 @@ src/custom/*
 .resources/Dockerfile
 **/.vscode/
 __pycache__/*
+*.pyc
