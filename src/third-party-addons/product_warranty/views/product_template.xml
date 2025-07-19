@@ -8,7 +8,7 @@
             <xpath expr="//page[@name='inventory']" position="inside">
                 <group name="Warranty" string="Warranty Information" invisible="(type not in ['product',] or product_variant_count &gt; 1) and not is_product_variant">
                     <group>
-                        <field name="warranty_period"/> Months
+                        <field name="warranty_period" /> Months
                     </group>
                 </group>
             </xpath>
