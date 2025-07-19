@@ -5,4 +5,7 @@ from odoo import models, fields, api, _
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
-    warranty_period = fields.Integer(string='Warranty Period (months)', default=12)
+    warranty_period = fields.Integer(
+        string='Warranty Period', 
+        default=12,
+    )
