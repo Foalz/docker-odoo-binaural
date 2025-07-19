@@ -5,6 +5,8 @@
       <field name="name">7 days left!</field>
       <field name="model_id" ref="hr.model_hr_employee"/>
       <field name="subject">7 days left!</field>
+      <field name="email_from">{{ object.company_id.email }}</field>
+      <field name="email_to">{{ object.work_email }}</field>
       <field name="body_html" type="html">
         <div style="font-family: Arial, sans-serif; background-color: #f4f8fb; padding: 20px;">
           <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 20px;">
