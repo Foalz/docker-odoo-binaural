@@ -8,6 +8,7 @@
     'category': 'Human Resources',
     'depends': ['hr', 'hr_payroll'],
     'data': [
+        'security/ir.model.access.csv',
         'data/ir_cron.xml',
         'data/mail_template.xml',
     ],
