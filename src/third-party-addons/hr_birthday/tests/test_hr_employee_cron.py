@@ -17,7 +17,7 @@ class HrEmployee(TransactionCase):
             'name': 'Test Employee',
             'birthday': datetime.now().date() - relativedelta(days=7),  # Set birthday to 7 days from now
             'active': True,
-            'email': 'test@example.com'
+            'work_email': 'test@example.com'
         })
 
         birthday_model = self.env['hr.birthday']
@@ -31,6 +31,6 @@ class HrEmployee(TransactionCase):
             ('create_date', '<=', datetime(datetime.now().year, 12, 31)),
             ('create_date', '>=', datetime(datetime.now().year, 1, 1))
         ])
-
-        self.assertTrue(mail_ids > 0, "Email should be sent for upcoming birthday")
-        self.assertEqual(mail_ids.mail_to, employee_id.email, "No email should be sent yet as the birthday is in 7 days")
+        
+        self.assertTrue(mail_ids == 1, "Birthday email was not sent as expected")
+        self.assertEqual(mail_ids.mail_to, employee_id.work_email, "No email should be sent yet as the birthday is in 7 days")
