@@ -10,5 +10,7 @@ class ResConfigSettings(models.TransientModel):
         string='Enable Stock Picking Quality',
         help='Enable quality checks for stock picking operations.',
         config_parameter='stock_picking_quality.quality_check_enabled',
+        company_dependent=True,
+        related='company_id.stock_picking_quality',
+        readonly=False
     )
-    

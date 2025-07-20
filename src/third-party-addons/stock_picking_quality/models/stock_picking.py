@@ -15,9 +15,19 @@ class StockPicking(models.Model):
     qc_user_id = fields.Many2one('res.users', string="Checked By", copy=False)
     qc_notes = fields.Text(string="Quality Notes", copy=False)
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            # Ensuring that the quality check state is set to 'to_check' by default
+            vals['qc_state'] = 'to_check'
+        return super(StockPicking, self).create(vals_list)
+    
     def button_validate(self):
         for picking in self:
-            if self.env['ir.config_parameter'].sudo().get_param('stock_picking_quality.quality_check_enabled'):
+            company = picking.company_id
+            config_param = self.env['ir.config_parameter'].sudo().with_company(company.id)
+            is_enabled = config_param.get_param('stock_picking_quality.quality_check_enabled')
+            if is_enabled:
                 if picking.qc_state == 'to_check':
                     raise UserError(_("You cannot validate this transfer until it passes the quality check."))
                 elif picking.qc_state == 'failed':
