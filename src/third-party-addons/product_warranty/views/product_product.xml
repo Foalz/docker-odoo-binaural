@@ -14,4 +14,15 @@
             </xpath>
         </field>
     </record>
+
+    <record id="product_product_stock_tree_inherit" model="ir.ui.view">
+        <field name="name">product.product.stock.tree.inherit.warranty</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.product_product_stock_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='display_name']" position="after">
+                <field name="warranty_period"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
