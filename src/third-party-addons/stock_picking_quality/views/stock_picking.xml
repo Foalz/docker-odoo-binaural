@@ -15,7 +15,7 @@
                         invisible="state in ('done', 'cancel')"
                     />
                 </xpath>
-                <xpath expr="//sheet" position="inside">
+                <xpath expr="//sheet/div" position="before">
                     <field name="qc_state" invisible="1"/>
                     <widget name="web_ribbon" title="Quality Passed" invisible="qc_state != 'passed'" />
                     <widget name="web_ribbon" title="Quality Failed" bg_color="text-bg-danger" invisible="qc_state != 'failed'" />
