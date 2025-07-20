@@ -6,7 +6,10 @@
     'category': 'Inventory',
     'depends': ['base', 'stock'],
     'data': [
+        'security/ir.model.access.csv',
         'views/res_config_settings.xml',
+        'views/stock_picking.xml',
+        'wizard/stock_picking_quality_check.xml',
     ],
     'installable': True,
     'application': False,
