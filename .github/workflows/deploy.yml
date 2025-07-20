@@ -15,6 +15,7 @@ jobs:
           ssh-private-key: ${{ secrets.REMOTE_SSH_KEY }}
 
       - name: Add remote host to known_hosts
+      
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H 3.131.153.251 >> ~/.ssh/known_hosts
