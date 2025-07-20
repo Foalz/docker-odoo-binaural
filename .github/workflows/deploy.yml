@@ -29,5 +29,5 @@ jobs:
             echo "[+] Restarting Docker container..."
             ./odoo restart
             echo "[+] Deployment completed successfully."
-          2>&1 | tee -a /var/log/deploy.log
+          2>&1
           EOF
