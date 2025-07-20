@@ -12,7 +12,7 @@
                         type="object" 
                         string="Quality Check" 
                         class="btn-primary"
-                        invisible="state in ('done', 'cancel')"
+                        invisible="(state in ('done', 'cancel')) or (qc_state not in ('passed', 'failed'))"
                     />
                 </xpath>
                 <xpath expr="//sheet/div" position="before">

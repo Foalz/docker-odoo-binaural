@@ -19,8 +19,9 @@ class StockPicking(models.Model):
         for picking in self:
             if self.env['ir.config_parameter'].sudo().get_param('stock_picking_quality.quality_check_enabled'):
                 if picking.qc_state == 'to_check':
-                    # If quality check is enabled and the state is 'to_check', raise an error
                     raise UserError(_("You cannot validate this transfer until it passes the quality check."))
+                elif picking.qc_state == 'failed':
+                    raise UserError(_("This transfer has failed the quality check and cannot be validated."))
         return super().button_validate()
     
     def action_open_quality_check(self):
