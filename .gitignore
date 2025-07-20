@@ -1,4 +1,5 @@
 .env
+venv/*
 src/enterprise
 src/integra-addons
 src/odoo-venezuela

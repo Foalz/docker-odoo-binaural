@@ -18,11 +18,11 @@ jobs:
 
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -H 18.216.1.43 >> ~/.ssh/known_hosts
+          ssh-keyscan -H 18.216.45.7 >> ~/.ssh/known_hosts
 
       - name: Deploy to Remote Server
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@18.216.1.43 << 'EOF'
+          ssh -o StrictHostKeyChecking=no ubuntu@18.216.45.7 << 'EOF'
             cd docker-odoo-binaural
             echo "[+] Pulling latest code from GitHub..."
             git pull
