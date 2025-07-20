@@ -19,7 +19,8 @@ export class TableSelectScreen extends Component {
     // Example method to handle table selection
     selectTable(tableId) {
         console.log(`Table ${tableId} selected`);
-        this.pos.add_new_order();
+        let order = this.pos.add_new_order();
+        order.set_screen_data({ name: 'ProductScreen' });
         this.pos.showScreen("ProductScreen");
         // Logic to handle table selection
     }
