@@ -4,13 +4,16 @@
     'author': 'Pedro Contreras',
     'website': 'https://www.tuempresa.com',
     'category': 'Sales',
-    'depends': ['point_of_sale'],
+    'depends': ['point_of_sale', 'base'],
     'data': [
 
     ],
     'assets': {
         'point_of_sale._assets_pos': [
-
+            'restaurant_management_pos/static/src/app/screens/table_select_screen/*.xml',
+            'restaurant_management_pos/static/src/app/screens/table_select_screen/*.js',
+            'restaurant_management_pos/static/src/app/screens/product_screen/action_pad/*.js',
+            'restaurant_management_pos/static/src/app/screens/product_screen/action_pad/*.xml',
         ],
     },
     'installable': True,

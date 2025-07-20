@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="point_of_sale.ActionpadWidgetInherit" t-inherit="point_of_sale.ActionpadWidget" t-inherit-mode="extension">
+        <xpath expr="//div/button[2]" position="after">
+            <button class="button set-partner btn btn-light rounded-0 py-2 flex-shrink-1 fw-bolder"
+                    t-on-click="showTableSelection"
+                    >
+                <div class="d-flex justify-content-center align-items-center ">
+                    <span class="d-flex justify-content-center align-items-center rounded-circle me-2 text-bg-dark" t-if="!ui.isSmall">
+                        <i class="fa fa-cutlery" role="img" aria-label="Table" title="Table" />
+                    </span>
+                    <div t-if="props.partner" class="text-truncate fw-bolder text-action">
+                        <t t-esc="props.partner.name" />
+                    </div>
+                    <div t-else="fw-bolder">
+                        Customer
+                    </div>
+                </div>
+            </button>
+        </xpath>
+    </t>
+</templates>
