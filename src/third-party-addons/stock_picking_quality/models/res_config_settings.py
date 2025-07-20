@@ -8,6 +8,7 @@ class ResConfigSettings(models.TransientModel):
 
     stock_picking_quality = fields.Boolean(
         string='Enable Stock Picking Quality',
-        help='Enable quality checks for stock picking operations.'
+        help='Enable quality checks for stock picking operations.',
+        config_parameter='stock_picking_quality.quality_check_enabled',
     )
     

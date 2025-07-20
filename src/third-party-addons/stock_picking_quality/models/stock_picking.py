@@ -12,19 +12,18 @@ class StockPicking(models.Model):
         ('failed', 'Rechazado'),
     ], string="Quality Check Status", default='to_check', copy=False)
 
-    # Aquí puedes añadir otros campos para registrar quién lo hizo, notas, etc.
     qc_user_id = fields.Many2one('res.users', string="Checked By", copy=False)
     qc_notes = fields.Text(string="Quality Notes", copy=False)
 
     def button_validate(self):
-        # Sobrescribes el botón de validar para bloquear la acción
         for picking in self:
-            # Comprueba si la verificación es necesaria y si no ha sido aprobada
-            if picking.picking_type_id.require_quality_check and picking.qc_state != 'passed':
-                raise UserError(_("You cannot validate this transfer until it passes the quality check."))
+            if self.env['ir.config_parameter'].sudo().get_param('stock_picking_quality.quality_check_enabled'):
+                if picking.qc_state == 'to_check':
+                    # If quality check is enabled and the state is 'to_check', raise an error
+                    raise UserError(_("You cannot validate this transfer until it passes the quality check."))
         return super().button_validate()
     
-    def action_quality_check(self):
+    def action_open_quality_check(self):
         return {
             'type': 'ir.actions.act_window',
             'name': _('Quality Check'),
@@ -33,6 +32,7 @@ class StockPicking(models.Model):
             'target': 'new',
             'context': {
                 'default_picking_id': self.id,
-                'default_qc_user_id': self.env.uid,
+                'default_user_id': self.env.uid,
+                'default_state': self.qc_state,
             },
         }
