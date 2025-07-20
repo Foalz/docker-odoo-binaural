@@ -7,5 +7,4 @@ class ProductProduct(models.Model):
 
     warranty_period = fields.Integer(
         string='Warranty Period', 
-        default=12,
     )
