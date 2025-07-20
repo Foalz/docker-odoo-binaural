@@ -7,9 +7,9 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     qc_state = fields.Selection([
-        ('to_check', 'Pendiente de Verificación'),
-        ('passed', 'Aprobado'),
-        ('failed', 'Rechazado'),
+        ('to_check', 'To check'),
+        ('passed', 'Passed'),
+        ('failed', 'Failed'),
     ], string="Quality Check Status", default='to_check', copy=False)
 
     qc_user_id = fields.Many2one('res.users', string="Checked By", copy=False)
