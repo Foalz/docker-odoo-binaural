@@ -20,6 +20,8 @@ export class TableSelectScreen extends Component {
     selectTable(tableId) {
         console.log(`Table ${tableId} selected`);
         let order = this.pos.add_new_order();
+        console.log("Current Order:", order);
+        console.log(order.get_screen_data());
         order.set_screen_data({ name: 'ProductScreen' });
         this.pos.showScreen("ProductScreen");
         // Logic to handle table selection
