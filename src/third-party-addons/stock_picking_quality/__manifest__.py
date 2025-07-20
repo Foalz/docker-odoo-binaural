@@ -4,9 +4,9 @@
     'author': 'Pedro Contreras',
     'website': 'https://www.tuempresa.com',
     'category': 'Inventory',
-    'depends': ['stock'],
+    'depends': ['base', 'stock'],
     'data': [
-        
+        'views/res_config_settings.xml',
     ],
     'installable': True,
     'application': False,
