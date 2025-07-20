@@ -12,11 +12,24 @@ class StockPickingQualityCheck(models.TransientModel):
         required=True,
         readonly=True,
     )
+    user_id = fields.Many2one(
+        'res.users',
+        string='Checked By',
+        default=lambda self: self.env.user,
+        required=True,
+    )
+    state = fields.Selection([
+        ('to_check', 'To Check'),
+        ('passed', 'Passed'),
+        ('failed', 'Failed'),
+    ], string='Quality Check Status', default='to_check', required=True)
     notes = fields.Text(string='Notes')
 
     def action_confirm(self):
         self.ensure_one()
-        if not self.passed:
-            raise UserError(_('Quality check failed. Please review the picking.'))
-        self.picking_id.write({'quality_checked': True})
+        self.picking_id.write({
+            'qc_user_id': self.user_id.id,
+            'qc_state': self.state,
+            'qc_notes': self.notes,
+        })
         return {'type': 'ir.actions.act_window_close'}
