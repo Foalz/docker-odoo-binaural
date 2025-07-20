@@ -34,7 +34,10 @@
                         widget="badge" 
                         decoration-danger="qc_state=='failed'" 
                         decoration-muted="qc_state == 'to_check'" 
-                        decoration-success="qc_state == 'passed'"/>
+                        decoration-success="qc_state == 'passed'"
+                    />
+                    <field name="qc_user_id" widget="many2one_avatar_user"
+                        string="Quality Check By" class="o_field_avatar"/>
                 </xpath>
             </field>
         </record>
