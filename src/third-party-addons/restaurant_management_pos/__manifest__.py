@@ -6,7 +6,10 @@
     'category': 'Sales',
     'depends': ['point_of_sale', 'base'],
     'data': [
-
+        'security/ir.model.access.csv',
+        'views/pos_order.xml',
+        'views/pos_tables.xml',
+        'views/menu.xml',
     ],
     'assets': {
         'point_of_sale._assets_pos': [
