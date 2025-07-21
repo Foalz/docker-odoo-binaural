@@ -10,7 +10,10 @@ patch(ActionpadWidget.prototype, {
     setup() {
         super.setup();
         this.state = useState({
-            tableId: this.getTableId(),
+            table: {
+                id: this.getTableId(),
+                name: `Table ${this.getTableId()}`,
+            }
         });
     },
 
