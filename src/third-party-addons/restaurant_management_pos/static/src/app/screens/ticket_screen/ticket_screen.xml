@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
     <t t-name="point_of_sale.TicketScreenInherit" t-inherit="point_of_sale.TicketScreen" t-inherit-mode="extension">
-        <xpath expr="//div[@class='orders']" position="replace">
+        <xpath expr="//div[hasclass('orders')]" position="replace">
             <div class="orders overflow-y-auto flex-grow-1">
                 <t t-set="_filteredOrderList" t-value="getFilteredOrderList()" />
                 <t t-if="_filteredOrderList.length !== 0">
