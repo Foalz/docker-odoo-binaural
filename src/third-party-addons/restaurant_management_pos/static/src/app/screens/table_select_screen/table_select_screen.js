@@ -16,6 +16,10 @@ export class TableSelectScreen extends Component {
         this.popup = useService("popup");
     }
 
+    get tables() {
+        return this.pos.tables || [];
+    }
+
     // Example method to handle table selection
     selectTable(tableId) {
         const currentOrder = this.pos.get_order();

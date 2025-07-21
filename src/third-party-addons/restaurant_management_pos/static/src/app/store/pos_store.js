@@ -5,6 +5,22 @@ import { patch } from "@web/core/utils/patch";
 import { PosCollection, Order, Product } from "@point_of_sale/app/store/models";
 
 patch(PosStore.prototype, {
+    get tables() {
+        const tables = this.get_tables();
+        if (!tables) {
+            console.warn("No tables found in POS store");
+            return [];
+        }
+        console.log("Tables fetched:", tables);
+        return tables;
+    },
+
+    async get_tables() {
+        return await this.orm.call("restaurant.table", "search_read", [], {
+            fields: ["id", "name", "capacity"],
+        });
+    },
+
     createReactiveOrder(json) {
         const options = { pos: this };
         if (json) {
