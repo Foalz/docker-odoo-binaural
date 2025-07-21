@@ -10,3 +10,4 @@ class PosConfig(models.Model):
         if not table_ids:
             raise UserError(_("No active tables found. Please create and activate tables before starting the POS."))
         super(PosConfig, self).open_ui()
+        return self._action_to_open_ui()
