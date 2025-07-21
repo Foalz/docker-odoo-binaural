@@ -10,6 +10,7 @@ patch(Order.prototype, {
     setup(_defaultObj, options) {
         super.setup(_defaultObj, options);
         this.table = null; // Initialize table to null
+        console.log(this);
     },
     set_table(table) {
         this.assert_editable();
