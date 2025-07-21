@@ -1,7 +1,7 @@
 /** @odoo-module */
 
 import { usePos } from "@point_of_sale/app/store/pos_hook";
-import { Component, useState } from "@odoo/owl";
+import { Component, useState, onMounted } from "@odoo/owl";
 import { useService } from "@web/core/utils/hooks";
 import { registry } from "@web/core/registry";
 
@@ -14,10 +14,15 @@ export class TableSelectScreen extends Component {
         this.ui = useState(useService("ui"));
         this.orm = useService("orm");
         this.popup = useService("popup");
+        this.state = useState({ tables: [] });
+        onMounted(async () => {
+            const fetchedTables = await this.pos.get_tables();
+            this.state.tables = fetchedTables;
+        });
     }
 
     get tables() {
-        return this.pos.tables || [];
+        return this.state.tables;
     }
 
     // Example method to handle table selection
