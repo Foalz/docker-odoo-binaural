@@ -17,14 +17,13 @@ class HrEmployee(TransactionCase):
         '''
         employee_id = self.env['hr.employee'].create({
             'name': 'Test Employee',
-            'birthday': datetime.now().date() - relativedelta(days=7),  # Set birthday to 7 days from now
+            'birthday': datetime.now().date() + relativedelta(days=7),  # Set birthday to 7 days from now
             'active': True,
             'work_email': 'test@example.com'
         })
 
         birthday_model = self.env['hr.birthday']
         birthday_model._cron_send_birthday_email()
-        _logger.info("Employee birthday: %s", employee_id.birthday)
 
         mail_ids = self.env['mail.mail'].search_count([
             ('res_id', '=', employee_id.id),
