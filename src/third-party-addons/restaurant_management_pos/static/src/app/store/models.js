@@ -31,6 +31,9 @@ patch(Order.prototype, {
     init_from_JSON(json) {
         super.init_from_JSON(json);
         // Initialize screen data if not present
+        if (!this.table) {
+            this.table = json.table_id ? { id: json.table_id, name: `Table ${json.table_id}` } : null;
+        }
         console.log("Initializing order from JSON:", json);
     },
     export_as_JSON() {
