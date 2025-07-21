@@ -9,10 +9,10 @@
     'depends': ['hr', 'hr_payroll'],
     'data': [
         'security/ir.model.access.csv',
-        'data/ir_cron.xml',
-        'data/mail_template.xml',
         'views/hr_birthday.xml',
         'views/menu.xml',
+        'data/ir_cron.xml',
+        'data/mail_template.xml',
     ],
     'installable': True,
     'application': False,
