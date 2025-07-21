@@ -5,7 +5,9 @@ from odoo.exceptions import UserError
 from odoo.tests import tagged
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import logging
 
+_logger = logging.getLogger(__name__)
 @tagged('post_install', '-at_install')
 class HrEmployee(TransactionCase):
 
@@ -22,8 +24,7 @@ class HrEmployee(TransactionCase):
 
         birthday_model = self.env['hr.birthday']
         birthday_model._cron_send_birthday_email()
-
-        raise Exception(self.env['mail.mail'].search([]))
+        _logger.info("Employee birthday: %s", employee_id.birthday)
 
         mail_ids = self.env['mail.mail'].search_count([
             ('res_id', '=', employee_id.id),
