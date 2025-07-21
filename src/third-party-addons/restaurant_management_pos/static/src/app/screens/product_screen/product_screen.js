@@ -5,6 +5,6 @@ import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product
 
 patch(ProductScreen.prototype, {
     get table() {
-        return this.currentOrder ? this.currentOrder.get_table() : null;
+        return this.pos.get_order() ? this.pos.get_order().get_table() : null;
     },
 });

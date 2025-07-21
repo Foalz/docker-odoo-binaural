@@ -9,12 +9,10 @@ import { patch } from "@web/core/utils/patch";
 patch(ActionpadWidget.prototype, {
     setup() {
         super.setup();
-        this.state = useState({
-            table: {
-                id: this.getTableId(),
-                name: `Table ${this.getTableId()}`,
-            }
-        });
+    },
+
+    get table() {
+        return this.pos.get_order()?.get_table() || null;
     },
 
     getTableId() {
