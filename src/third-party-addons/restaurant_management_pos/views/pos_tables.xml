@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_pos_tables_tree" model="ir.ui.view">
+        <field name="name">pos.tables.tree</field>
+        <field name="model">pos.tables</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="capacity"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_pos_tables_form" model="ir.ui.view">
+        <field name="name">pos.tables.form</field>
+        <field name="model">pos.tables</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="capacity"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_pos_tables" model="ir.actions.act_window">
+        <field name="name">POS Tables</field>
+        <field name="res_model">pos.tables</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Manage your restaurant tables here.
+            </p>
+        </field>
+    </record>
+</odoo>

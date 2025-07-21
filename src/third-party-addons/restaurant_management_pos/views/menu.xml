@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem 
+        id="menu_pos_tables"
+        name="POS Tables" 
+        parent="point_of_sale.menu_point_config_product" 
+        action="action_pos_tables"
+    />
+</odoo>
