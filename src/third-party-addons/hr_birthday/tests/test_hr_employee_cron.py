@@ -23,6 +23,8 @@ class HrEmployee(TransactionCase):
         birthday_model = self.env['hr.birthday']
         birthday_model._cron_send_birthday_email()
 
+        raise Exception(self.env['mail.mail'].search([]))
+
         mail_ids = self.env['mail.mail'].search_count([
             ('res_id', '=', employee_id.id),
             ('model', '=', 'hr.employee'),
