@@ -25,7 +25,7 @@
             
             <div class="tables-grid-container">
                 <div class="tables-grid">
-                    <t t-foreach="tables" t-as="table">
+                    <t t-foreach="tables" t-as="table" t-key="table.id">
                         <div class="table-card" t-on-click="() => this.selectTable(table.id)">
                             <div class="table-name" t-esc="table.name"/>
                             <div class="table-info">
