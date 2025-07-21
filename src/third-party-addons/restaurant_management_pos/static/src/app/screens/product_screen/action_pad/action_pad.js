@@ -15,7 +15,7 @@ patch(ActionpadWidget.prototype, {
     },
 
     getTableId() {
-        return this.pos.currentOrder.table_id || 1; // Default to 1 if no table is set
+        return this.pos.get_order().table_id || 1; // Default to 1 if no table is set
     },
 
     showTableSelection() {
