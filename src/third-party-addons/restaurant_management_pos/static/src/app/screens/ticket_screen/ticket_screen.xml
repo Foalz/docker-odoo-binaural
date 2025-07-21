@@ -76,6 +76,5 @@
                 <CenteredIcon t-else="" icon="'fa-shopping-cart fa-4x'" text="'No orders found'"/>
             </div>
         </xpath>
-        <xpath></xpath>
     </t>
 </templates>
