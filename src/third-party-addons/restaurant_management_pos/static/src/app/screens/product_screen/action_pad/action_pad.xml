@@ -6,7 +6,7 @@
             <button class="button set-partner btn btn-light rounded-0 py-2 flex-shrink-1 fw-bolder"
                     t-on-click="showTableSelection"
             >
-                <div class="d-flex justify-content-center align-items-center ">
+                <div class="d-flex justify-content-left align-items-center ">
                     <span class="d-flex justify-content-center align-items-center rounded-circle me-2 text-bg-dark" t-if="!ui.isSmall">
                         <i class="fa fa-cutlery" role="img" aria-label="Table" title="Table" />
                     </span>

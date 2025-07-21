@@ -4,7 +4,8 @@
     <t t-name="point_of_sale.ProductScreenInherit" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
         <xpath expr="//div[@class='subpads d-flex']" position="replace">
             <div class="control-buttons d-flex flex-wrap border-bottom overflow-hidden bg-300">
-                <button class="button set-partner btn btn-light rounded-0 py-2 flex-shrink-1 fw-bolder"
+                <button 
+                    class="control-button btn btn-info rounded-0 fw-bolder"
                     t-on-click="() => console.log('Set Partner Clicked')"
                 >
                     Table List
