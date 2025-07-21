@@ -12,7 +12,6 @@ patch(ActionpadWidget.prototype, {
         this.state = useState({
             tableId: this.getTableId(),
         });
-        console.log(this.props);
     },
 
     getTableId() {
