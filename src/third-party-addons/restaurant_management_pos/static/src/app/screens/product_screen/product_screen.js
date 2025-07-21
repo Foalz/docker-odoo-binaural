@@ -5,6 +5,6 @@ import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product
 
 patch(ProductScreen.prototype, {
     get table() {
-        return 'Example Table'; // Replace with actual logic to get the table
+        return {name: 'example', id: 1}; // Replace with actual logic to get the table
     },
 });
