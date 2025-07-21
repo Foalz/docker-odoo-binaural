@@ -21,6 +21,7 @@ class HrEmployee(TransactionCase):
         })
 
         birthday_model = self.env['hr.birthday']
+        birthday_model._cron_send_birthday_email()
 
         mail_ids = self.env['mail.mail'].search_count([
             ('res_id', '=', employee_id.id),
