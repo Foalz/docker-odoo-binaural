@@ -25,51 +25,15 @@
             
             <div class="tables-grid-container">
                 <div class="tables-grid">
-                    <div class="table-card available" t-on-click="() => this.selectTable(1)">
-                        <div class="table-name">Mesa 1</div>
-                        <div class="table-info">
-                            <span class="table-capacity"><i class="fa fa-users me-1"/>4</span>
-                            <span class="table-status">Disponible</span>
+                    <t t-foreach="tables" t-as="table">
+                        <div class="table-card" t-on-click="() => this.selectTable(table.id)">
+                            <div class="table-name" t-esc="table.name"/>
+                            <div class="table-info">
+                                <span class="table-capacity" t-esc="`<i class='fa fa-users me-1'/>${table.capacity}`" t-raw="true"/>
+                                <span class="table-status" t-esc="table.status"/>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="table-card occupied" t-on-click="() => this.selectTable(2)">
-                        <div class="table-name">Mesa 2</div>
-                        <div class="table-info">
-                            <span class="table-capacity"><i class="fa fa-users me-1"/>2</span>
-                            <span class="table-status">Ocupado</span>
-                        </div>
-                    </div>
-                    
-                    <div class="table-card available" t-on-click="() => this.selectTable(3)">
-                        <div class="table-name">Terraza 1</div>
-                        <div class="table-info">
-                            <span class="table-capacity"><i class="fa fa-users me-1"/>6</span>
-                            <span class="table-status">Disponible</span>
-                        </div>
-                    </div>
-
-                    <div class="table-card reserved" t-on-click="() => this.selectTable(4)">
-                        <div class="table-name">Mesa 4</div>
-                        <div class="table-info">
-                            <span class="table-capacity"><i class="fa fa-users me-1"/>4</span>
-                            <span class="table-status">Reservado</span>
-                        </div>
-                    </div>
-                    <div class="table-card available" t-on-click="() => this.selectTable(5)">
-                        <div class="table-name">Mesa 5</div>
-                         <div class="table-info">
-                            <span class="table-capacity"><i class="fa fa-users me-1"/>8</span>
-                            <span class="table-status">Disponible</span>
-                        </div>
-                    </div>
-                     <div class="table-card occupied" t-on-click="() => this.selectTable(6)">
-                        <div class="table-name">Barra 3</div>
-                        <div class="table-info">
-                            <span class="table-capacity"><i class="fa fa-users me-1"/>1</span>
-                            <span class="table-status">Ocupado</span>
-                        </div>
-                    </div>
+                    </t>
                 </div>
             </div>
         </div>
