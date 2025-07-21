@@ -1,8 +1,10 @@
 /** @odoo-module */
 
-import { PosStore } from "@point_of_sale/app/store/pos_store";
 import { patch } from "@web/core/utils/patch";
 import { PosCollection, Order, Product } from "@point_of_sale/app/store/models";
+import {
+    serializeDateTime,
+} from "@web/core/l10n/dates";
 
 patch(Order.prototype, {
     setup(_defaultObj, options) {
