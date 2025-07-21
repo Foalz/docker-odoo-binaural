@@ -14,10 +14,9 @@ patch(Order.prototype, {
     set_table(table) {
         this.assert_editable();
         this.table = table;
-        this.updatePricelistAndFiscalPosition(table);
     },
     get_table() {
-        return this.table;
+        return this.table;  
     },
     set_partner(partner) {
         console.log("Setting partner:", partner);
