@@ -1,42 +1,65 @@
 # -*- coding: utf-8 -*-
-
-from odoo import fields, api, models, _
-from datetime import datetime
+from odoo.tests.common import TransactionCase
+from odoo.tests import tagged
+from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
+import logging
 
-class HrBirthday(models.Model):
-    _name = 'hr.birthday'
-    _description = ''
+_logger = logging.getLogger(__name__)
 
-    employee_id = fields.Many2one('hr.employee', string='Employee', required=True)
-    birthday = fields.Date(string='Birthday', required=True)
-    email_sent = fields.Boolean(string='Email Sent', default=False)
-    days_to_birthday = fields.Integer(string='Days to Birthday', compute='_compute_days_to_birthday')
+@tagged('post_install', '-at_install')
+class TestHrBirthdayCron(TransactionCase):
 
-    @api.depends('birthday')
-    def _compute_days_to_birthday(self):
-        today = fields.Date.today()
-        for record in self:
-            if record.birthday:
-                birthday_this_year = fields.Date.from_string(record.birthday).replace(year=today.year)
-                if birthday_this_year < today:
-                    birthday_this_year = birthday_this_year.replace(year=today.year + 1)
-                record.days_to_birthday = (birthday_this_year - today).days
+    def setUp(self):
+        super(TestHrBirthdayCron, self).setUp()
+        self.HrEmployee = self.env['hr.employee']
+        self.HrBirthday = self.env['hr.birthday']
+        self.Mail = self.env['mail.mail']
 
-    @api.model
-    def _cron_send_birthday_email(self):
-        employee_ids = self.env['hr.employee'].search([
-            ('birthday', '!=', False),
-            ('active', '=', True),
+        self.birthday_date = date.today() + relativedelta(days=7)
+        self.employee = self.HrEmployee.create({
+            'name': 'Test Employee Bday',
+            'birthday': self.birthday_date,
+            'work_email': 'test.employee@example.com',
+            'active': True,
+        })
+
+        self.other_employee = self.HrEmployee.create({
+            'name': 'Other Employee',
+            'birthday': date.today() + relativedelta(days=10),
+            'work_email': 'other.employee@example.com',
+            'active': True,
+        })
+
+
+    def test_cron_send_birthday_email(self):
+        self.HrBirthday._cron_send_birthday_email()
+
+        birthday_record = self.HrBirthday.search([
+            ('employee_id', '=', self.employee.id),
+            ('birthday', '=', self.birthday_date)
         ])
-        today = datetime.now()
-        for employee in employee_ids:
-            if employee.birthday.day == (today + relativedelta(days=7)).day:
-                if not self.search([('employee_id', '=', employee.id)]):
-                    self.create({
-                        'employee_id': employee.id,
-                        'birthday': employee.birthday,
-                        'email_sent': False,
-                    })
-                mail_template = self.env.ref('hr_birthday.seven_days_left_birthday')
-                mail_template.send_mail(employee.id, force_send=True)
+
+        self.assertEqual(len(birthday_record), 1,
+                         "Cron job did not create the hr.birthday record for the employee.")
+        self.assertFalse(birthday_record.email_sent,
+                         "The email_sent field should be False initially (although this depends on your logic).")
+
+        sent_mail = self.Mail.search([
+            ('res_id', '=', self.employee.id),
+            ('model', '=', 'hr.employee'),
+            ('email_to', '=', self.employee.work_email),
+            ('subject', 'ilike', '7 days left!'),
+        ])
+
+        self.assertEqual(len(sent_mail), 1, "Birthday email was not generated or found.")
+        self.assertEqual(sent_mail.email_to, self.employee.work_email,
+                         "Email was sent to the wrong address.")
+
+        other_birthday_record = self.HrBirthday.search([('employee_id', '=', self.other_employee.id)])
+        self.assertFalse(other_birthday_record,
+                         "A birthday record was created for an incorrect employee.")
+
+        other_sent_mail = self.Mail.search([('res_id', '=', self.other_employee.id)])
+        self.assertFalse(other_sent_mail,
+                         "Email was sent to an incorrect employee.")
