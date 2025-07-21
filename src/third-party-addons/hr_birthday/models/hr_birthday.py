@@ -39,4 +39,4 @@ class HrBirthday(models.Model):
                         'email_sent': False,
                     })
                 mail_template = self.env.ref('hr_birthday.seven_days_left_birthday')
-                mail_template.send_mail(employee.id, force_send=True)
+                mail_template.send_mail(employee.id)
