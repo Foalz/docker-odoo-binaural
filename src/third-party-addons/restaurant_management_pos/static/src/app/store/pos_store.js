@@ -16,7 +16,7 @@ patch(PosStore.prototype, {
     },
 
     async get_tables() {
-        return await this.orm.call("restaurant.table", "search_read", [], {
+        return await this.orm.call("pos.tables", "search_read", [], {
             fields: ["id", "name", "capacity"],
         });
     },
