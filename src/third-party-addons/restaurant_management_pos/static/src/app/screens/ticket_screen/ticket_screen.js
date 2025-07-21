@@ -11,8 +11,17 @@ patch(TicketScreen.prototype, {
             const screen = order.get_screen_data();
             console.log(order);
             console.log(this._getOrderStates().get(this._getScreenToStatusMap()[screen.name]));
+        
             return this._getOrderStates().get(this._getScreenToStatusMap()[screen.name]).text;
         }
+    },
+    _getScreenToStatusMap() {
+        return {
+            ProductScreen: "ONGOING",
+            TableSelectScreen: "ONGOING",
+            PaymentScreen: "PAYMENT",
+            ReceiptScreen: "RECEIPT",
+        };
     }
 
 });
