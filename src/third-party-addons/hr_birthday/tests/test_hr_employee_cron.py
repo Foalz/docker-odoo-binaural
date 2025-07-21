@@ -25,7 +25,7 @@ class HrEmployee(TransactionCase):
         mail_ids = self.env['mail.mail'].search_count([
             ('res_id', '=', employee_id.id),
             ('model', '=', 'hr.employee'),
-            ('state', 'not in', ['exception', 'cancelled']),
+            # ('state', 'not in', ['exception', 'cancelled']),
             ('email_to', '=', employee_id.work_email),
             ('subject', '=', '7 days left!'),
             #TODO: Validate mail template and ensure it is sent
