@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem id="menu_hr_birthday" name="Employee Birthdays" parent="menu_hr_birthday_root" action="action_hr_birthday_tree" sequence="10"/>
+    <menuitem 
+        id="menu_hr_birthday" 
+        name="Employee Birthdays" 
+        parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root" 
+        action="action_hr_birthday_tree" 
+        sequence="10"/>
 </odoo>
