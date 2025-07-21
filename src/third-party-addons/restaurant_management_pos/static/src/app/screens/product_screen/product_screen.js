@@ -5,6 +5,6 @@ import { ProductScreen } from "@point_of_sale/app/screens/product_screen/product
 
 patch(ProductScreen.prototype, {
     get table() {
-        return {name: 'example', id: 1}; // Replace with actual logic to get the table
+        return this.currentOrder ? this.currentOrder.get_table() : null;
     },
 });

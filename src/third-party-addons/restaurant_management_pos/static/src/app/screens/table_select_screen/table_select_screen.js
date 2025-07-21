@@ -18,6 +18,11 @@ export class TableSelectScreen extends Component {
 
     // Example method to handle table selection
     selectTable(tableId) {
+        const currentOrder = this.get_order();
+        if (!currentOrder) {
+            return;
+        }
+        currentOrder.set_table({ id: tableId, name: `Table ${tableId}`});
         console.log(`Table ${tableId} selected`);
         let order = this.pos.add_new_order();
         console.log("Current Order:", order);
