@@ -5,7 +5,7 @@
         <field name="name">hr.birthday.tree</field>
         <field name="model">hr.birthday</field>
         <field name="arch" type="xml">
-            <tree editable="false">
+            <tree editable="0">
                 <field name="employee_id"/>
                 <field name="birthday"/>
                 <field name="email_sent"/>
