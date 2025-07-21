@@ -6,7 +6,7 @@
             <div class="control-buttons d-flex flex-wrap border-bottom overflow-hidden bg-300">
                 <button 
                     class="control-button btn btn-info rounded-0 fw-bolder"
-                    t-on-click="() => this.pos.showScreen('TableSelectScreen')"
+                    t-on-click="() => this.pos.showScreen('TableSelectScreen', { createOrder: true })"
                 >
                     Table List
                 </button>

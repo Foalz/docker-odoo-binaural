@@ -33,10 +33,10 @@ export class TableSelectScreen extends Component {
         }
         currentOrder.set_table({ id: tableId, name: `Table ${tableId}`});
         console.log(`Table ${tableId} selected`);
-        let order = this.pos.add_new_order();
-        console.log("Current Order:", order);
-        console.log(order.get_screen_data());
-        order.set_screen_data({ name: 'ProductScreen' });
+
+        if (this.props.createOrder) {
+            this.pos.add_new_order();
+        }
         this.pos.showScreen("ProductScreen");
         // Logic to handle table selection
     }
