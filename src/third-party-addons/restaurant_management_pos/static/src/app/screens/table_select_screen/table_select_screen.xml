@@ -29,7 +29,7 @@
                         <div class="table-card" t-on-click="() => this.selectTable(table.id)">
                             <div class="table-name" t-esc="table.name"/>
                             <div class="table-info">
-                                <span class="table-capacity" t-esc="table.capacity" t-raw="true"/>
+                                <span class="table-capacity" t-esc="'Capacidad: ' + str(table.capacity) + ' personas'" t-raw="true"/>
                                 <span class="table-status" t-esc="table.status"/>
                             </div>
                         </div>
