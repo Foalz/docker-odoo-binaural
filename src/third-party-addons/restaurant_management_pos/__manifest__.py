@@ -19,9 +19,9 @@
             'restaurant_management_pos/static/src/app/screens/ticket_screen/*.scss',
             'restaurant_management_pos/static/src/app/screens/ticket_screen/*.xml',
 
+            'restaurant_management_pos/static/src/app/screens/table_select_screen/*.js',
             'restaurant_management_pos/static/src/app/screens/table_select_screen/*.scss',
             'restaurant_management_pos/static/src/app/screens/table_select_screen/*.xml',
-            'restaurant_management_pos/static/src/app/screens/table_select_screen/*.js',
 
             'restaurant_management_pos/static/src/app/screens/product_screen/action_pad/*.js',
             'restaurant_management_pos/static/src/app/screens/product_screen/action_pad/*.xml',
