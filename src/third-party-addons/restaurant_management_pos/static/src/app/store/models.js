@@ -16,6 +16,7 @@ patch(Order.prototype, {
         this.table = table;
     },
     get_table() {
+        console.log("Getting table:", this.table);
         return this.table;
     },
     set_partner(partner) {
