@@ -6,7 +6,7 @@
                 <div class="button-back" t-on-click="() => this.pos.showScreen('ProductScreen')">
                     <i class="fa fa-angle-left" role="img" aria-label="Back"/>
                 </div>
-                <h1 class="title">Seleccionar Mesa</h1>
+                <h1 class="title">Select Table</h1>
             </div>
 <!-- 
             <div class="floor-selector">
