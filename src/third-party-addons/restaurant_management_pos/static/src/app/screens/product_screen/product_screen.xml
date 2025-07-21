@@ -3,11 +3,13 @@
 
     <t t-name="point_of_sale.ProductScreenInherit" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
         <xpath expr="//div[@class='subpads d-flex']" position="replace">
-            <button class="button set-partner btn btn-light rounded-0 py-2 flex-shrink-1 fw-bolder"
-                t-on-click="() => console.log('Set Partner Clicked')"
-            >
-                HERE TO SELECT ANOTHER TABLE
-            </button>
+            <div class="control-buttons d-flex flex-wrap border-bottom overflow-hidden bg-300">
+                <button class="button set-partner btn btn-light rounded-0 py-2 flex-shrink-1 fw-bolder"
+                    t-on-click="() => console.log('Set Partner Clicked')"
+                >
+                    Table List
+                </button>
+            </div>
             <div class="subpads d-flex">
                 <ActionpadWidget
                     partner="partner"
