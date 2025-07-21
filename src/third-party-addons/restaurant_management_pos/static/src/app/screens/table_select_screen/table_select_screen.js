@@ -15,13 +15,6 @@ export class TableSelectScreen extends Component {
         this.orm = useService("orm");
         this.popup = useService("popup");
         this.state = useState({ tables: [] });
-        const table = this.props.table || null;
-        if (this.currentOrder.get_table() !== table) {
-            this.currentOrder.set_table({
-                id: this.currentOrder.table_id,
-                name: `Table ${this.currentOrder.table_id}`,
-            });
-        }
         onMounted(async () => {
             const fetchedTables = await this.pos.get_tables();
             this.state.tables = fetchedTables;
