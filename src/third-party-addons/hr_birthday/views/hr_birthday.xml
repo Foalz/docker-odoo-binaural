@@ -5,7 +5,7 @@
         <field name="name">hr.birthday.tree</field>
         <field name="model">hr.birthday</field>
         <field name="arch" type="xml">
-            <tree editable="0">
+            <tree>
                 <field name="employee_id"/>
                 <field name="birthday"/>
                 <field name="email_sent"/>
@@ -19,7 +19,6 @@
         <field name="name">Employee Birthdays</field>
         <field name="res_model">hr.birthday</field>
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_hr_birthday_tree"/>
         <field name="help" type="html">
             <p>View of employee birthdays and remaining days.</p>
         </field>
