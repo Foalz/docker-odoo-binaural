@@ -9,6 +9,7 @@ patch(TicketScreen.prototype, {
             return order.state === "invoiced" ? _t("Invoiced") : _t("Paid");
         } else {
             const screen = order.get_screen_data();
+            console.log(screen);
             console.log(order);
             console.log(this._getOrderStates().get(this._getScreenToStatusMap()[screen.name]));
         
