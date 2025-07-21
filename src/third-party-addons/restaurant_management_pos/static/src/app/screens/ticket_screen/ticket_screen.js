@@ -5,6 +5,8 @@ import { TicketScreen } from "@point_of_sale/app/screens/ticket_screen/ticket_sc
 
 patch(TicketScreen.prototype, {
     getStatus(order) {
+        console.log(order);
+        console.log(this._getOrderStates().get(this._getScreenToStatusMap()[screen.name]));
         if (order.locked) {
             return order.state === "invoiced" ? _t("Invoiced") : _t("Paid");
         } else {
