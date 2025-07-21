@@ -26,6 +26,8 @@ class HrEmployee(TransactionCase):
             ('res_id', '=', employee_id.id),
             ('model', '=', 'hr.employee'),
             ('state', 'not in', ['exception', 'cancelled']),
+            ('template_id', '=', self.env.ref('hr_birthday.seven_days_left_birthday').id),
+            ('email_to', '=', employee_id.work_email),
             #TODO: Validate mail template and ensure it is sent
 
             # We should validate that the email was sent within the current year
